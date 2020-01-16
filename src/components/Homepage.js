@@ -1,8 +1,13 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom'
+function Homepage({user, logout}) {
 
-function Homepage(props) {
-
-    return <div>Welcome!</div>
+    return (
+        <>
+            <div>Welcome! {user.name}</div>
+            <button onClick = {logout}>Log out</button>
+        </>
+    )
 }
 
 export default Homepage;

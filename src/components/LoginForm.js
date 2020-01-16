@@ -1,10 +1,12 @@
-import React, {useState, Fragment} from 'react';
+import React, {useState} from 'react';
 import {Redirect} from "react-router-dom"
 import API from '../API.js'
 
 
-function LoginForm({user, handleLogin}) {
+function LoginForm({setError, user, handleLogin}) {
     const [formData, setFormData] = useState({email: "", password: ""});
+
+    if (user) return <Redirect to="/"/>;
 
     function handleChange(e) {
         setFormData({...formData, [e.target.name]: e.target.value})
@@ -12,12 +14,18 @@ function LoginForm({user, handleLogin}) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        API.loginUser(formData).then(handleLogin)
+        API.loginUser(formData)
+            .then(handleLogin)
+            .then(() => setError(false))
+            .catch(errorPromise => {
+                errorPromise.then(setError);
+            });
     }
+    
 
     return (
         <>
-            <h2>Sign up to NutriTracker!</h2>
+            <h2>Sign in to NutriTracker</h2>
             <form onSubmit = {handleSubmit}>
                 <label>Email:
                     <input type = "text" name = "email" value = {formData.email} onChange = {handleChange}></input>
@@ -28,7 +36,6 @@ function LoginForm({user, handleLogin}) {
                 <input type = "submit" value = "Log in"></input>
 
             </form>
-            {user && <Redirect to="/" />}
         </>
     )
 }
