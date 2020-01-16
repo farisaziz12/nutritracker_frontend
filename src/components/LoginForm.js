@@ -1,16 +1,20 @@
 import React, {useState, Fragment} from 'react';
+import {Redirect} from "react-router-dom"
+import API from '../API.js'
 
 
-function LoginForm(props) {
+function LoginForm({user, handleLogin}) {
     const [formData, setFormData] = useState({email: "", password: ""});
 
     function handleChange(e) {
         setFormData({...formData, [e.target.name]: e.target.value})
     }
+
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(formData);
+        API.loginUser(formData).then(handleLogin)
     }
+
     return (
         <>
             <h2>Sign up to NutriTracker!</h2>
@@ -24,6 +28,7 @@ function LoginForm(props) {
                 <input type = "submit" value = "Log in"></input>
 
             </form>
+            {user && <Redirect to="/" />}
         </>
     )
 }
