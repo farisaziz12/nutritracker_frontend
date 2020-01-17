@@ -1,0 +1,126 @@
+button {
+    position: relative;
+    color: #1D9AF2;
+    background-color: #292D3E;
+    border: 1px solid #1D9AF2;
+    border-radius: 4px;
+    padding: 0 15px;
+    cursor: pointer;
+    height:32px;
+    font-size:14px;
+    transition: all 0.2s ease-in-out;
+    right: -600px;
+    bottom: -10px;
+    }
+
+    button:hover {
+    animation: swing 1s ease;
+    animation-iteration-count: 1;
+    }
+
+    @keyframes swing {
+    15% {
+    transform: translateX(5px);
+    }
+    30% {
+    transform: translateX(-5px);
+    }
+    50% {
+    transform: translateX(3px);
+    }
+    65% {
+    transform: translateX(-3px);
+    }
+    80% {
+    transform: translateX(2px);
+    }
+    100% {
+    transform: translateX(0);
+    }
+}
+
+input[type=text], select {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    position: relative;
+    right: -50px;
+  }
+
+  input[type=password], select {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    position: relative;
+    right: -35px;
+  }
+  
+
+  .add-button {
+    position: relative;
+    color: #1D9AF2;
+    background-color: #292D3E;
+    border: 1px solid #1D9AF2;
+    border-radius: 4px;
+    padding: 0 15px;
+    cursor: pointer;
+    height:32px;
+    font-size:14px;
+    transition: all 0.2s ease-in-out;
+    right: 20px;
+    bottom: 0px;
+    }
+
+    .add-button:hover {
+    animation: swing 1s ease;
+    animation-iteration-count: 1;
+    }
+
+    @keyframes swing {
+    15% {
+    transform: translateX(5px);
+    }
+    30% {
+    transform: translateX(-5px);
+    }
+    50% {
+    transform: translateX(3px);
+    }
+    65% {
+    transform: translateX(-3px);
+    }
+    80% {
+    transform: translateX(2px);
+    }
+    100% {
+    transform: translateX(0);
+    }
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  .error-message{
+      color: red;
+  }

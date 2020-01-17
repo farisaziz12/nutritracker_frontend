@@ -4,7 +4,7 @@ import LoginForm from './components/LoginForm.js';
 import SignupForm from './components/SignupForm.js';
 import API from './API.js';
 import {Switch, Route, Redirect} from 'react-router-dom';
-import Homepage from './components/Homepage.js';
+import Homepage from './components/Homepage/Homepage';
 
 function App() {
     const [user, setUser] = useState(false);
