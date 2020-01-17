@@ -3,8 +3,9 @@ import {Link, Redirect} from "react-router-dom"
 import API from '../API.js'
 
 
-function LoginForm({setError, user, handleLogin}) {
-    const [formData, setFormData] = useState({email: "", password: ""});
+function SignupForm({setError, user, handleLogin}) {
+
+    const [formData, setFormData] = useState({email: "", password: "", password_confirmation: "", name: ""});
 
     if (user) return <Redirect to="/"/>;
 
@@ -14,7 +15,7 @@ function LoginForm({setError, user, handleLogin}) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        API.loginUser(formData)
+       API.signUp(formData)
             .then(handleLogin)
             .then(() => setError(false))
             .catch(errorPromise => {
@@ -25,20 +26,26 @@ function LoginForm({setError, user, handleLogin}) {
 
     return (
         <>
-            <h2>Sign in to NutriTracker</h2>
+            <h2>Create an account with NutriTracker</h2>
             <form onSubmit = {handleSubmit}>
+                <label>Name:
+                    <input type = "text" name = "name" value = {formData.name} onChange = {handleChange}></input>
+                </label><br></br>
                 <label>Email:
                     <input type = "text" name = "email" value = {formData.email} onChange = {handleChange}></input>
                 </label><br></br>
                 <label>Password:
                     <input type = "password" name = "password" value = {formData.password} onChange = {handleChange}></input>
                 </label><br></br>
-                <input type = "submit" value = "Log in"></input>
+                <label>Password confirmation:
+                    <input type = "password" name = "password_confirmation" value = {formData.password_confirmation} onChange = {handleChange}></input><br></br>
+                </label>
+                <input type = "submit" value = "Submit"></input>
 
             </form>
-            <Link to="/signup">Create an account</Link>
+            <Link to="/login">Back to login page</Link>
         </>
     )
 }
 
-export default LoginForm;
+export default SignupForm;

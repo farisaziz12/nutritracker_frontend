@@ -11,7 +11,7 @@ function loginUser(user) {
 } 
 
 function signUp(user) {
-    fetch(SIGNUP_URL, createUserObj(user))
+    return fetch(SIGNUP_URL, createUserObj(user))
         .then(JSONresp)
         .then(handleUserResponse)
 }
