@@ -7,10 +7,9 @@ button {
     padding: 0 15px;
     cursor: pointer;
     height:32px;
+    width: 90px;
     font-size:14px;
     transition: all 0.2s ease-in-out;
-    right: -600px;
-    bottom: -10px;
     }
 
     button:hover {
@@ -62,6 +61,17 @@ input[type=text], select {
     position: relative;
     right: -35px;
   }
+  input[type= number], select {
+    width: 10%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    position: relative;
+    right: -35px;
+  }
   
 
   .add-button {
@@ -75,8 +85,21 @@ input[type=text], select {
     height:32px;
     font-size:14px;
     transition: all 0.2s ease-in-out;
-    right: 20px;
-    bottom: 0px;
+    right: 45px;
+    }
+
+  .confirm-button {
+    position: relative;
+    color: #1D9AF2;
+    background-color: #292D3E;
+    border: 1px solid #1D9AF2;
+    border-radius: 4px;
+    padding: 0 15px;
+    cursor: pointer;
+    height:32px;
+    font-size:14px;
+    bottom: -5px;
+    transition: all 0.2s ease-in-out;
     }
 
     .add-button:hover {
