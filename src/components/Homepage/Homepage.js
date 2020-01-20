@@ -1,7 +1,6 @@
 import React from 'react';
 import HomepageHeader from './HomepageHeader'
 import LogoutButton from './LogoutButton';
-import CalorieTrackerContainer from './CalorieTrackerContainer';
 import UserStats from './UserStats.js';
 import MealPlans from './MealPlans.js';
 // import { Menu, Segment } from 'semantic-ui-react'

@@ -7,18 +7,17 @@ function MealPlanShowPage({mealPlans}) {
 
     let params = useParams();
     const mealPlan = mealPlans.find(m => m.id === parseInt(params.id, 10));
-    console.log(mealPlan);
 
     if (!mealPlan) return <Redirect to = "/"/>;
 
     return (
         <div>
             <h1>Meal Plan: {mealPlan.name}</h1>
+            <Link to ="/">Back</Link>
             <h2>Meals:</h2>
             {mealPlan.meals.map(m => <Meal meal = {m} key = {m.id} />)}
             <MealForm mealPlanId = {mealPlan.id}/>
             <CalorieTrackerContainer/><br></br>
-            <Link to ="/">Back</Link>
         </div>
     );
 }

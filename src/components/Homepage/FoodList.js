@@ -28,7 +28,7 @@ class FoodList extends Component {
 
                             <tr key = {idx}>
                                 <td>{food.name}</td>
-                                <td>{food.calories} <input onChange={(event) => this.handleQuantityChange(event, food)} type="number"/></td> 
+                                <td>{food.calories} <input onChange={(event) => this.handleQuantityChange(event, food)} type="number" placeholder = {0}/></td> 
                             </tr>
 
                         ))
