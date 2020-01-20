@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {Button, Menu} from 'semantic-ui-react'
 import './css/homepage.css';
 
 class LogoutButton extends Component {

@@ -1,7 +1,8 @@
 const BASE_URL = "http://localhost:3000";
 const VALIDATE_URL = BASE_URL + "/validate"
 const LOGIN_URL = BASE_URL + "/login";
-const SIGNUP_URL = BASE_URL + "/users"
+const SIGNUP_URL = BASE_URL + "/users";
+const MEAL_PLAN_URL = BASE_URL + "/meal_plans";
 
 function loginUser(user) {
     
@@ -16,6 +17,11 @@ function signUp(user) {
         .then(handleUserResponse)
 }
 
+function newMealPlan(mealPlan) {
+    return fetch(MEAL_PLAN_URL, createMealPlanObj(mealPlan))
+        .then(JSONresp)
+}
+
 function handleUserResponse(user) {
     if (user.token) {
         localStorage.token = user.token;
@@ -28,6 +34,18 @@ function JSONresp(resp) {
     throw resp.json();
 }
 
+function createMealPlanObj(meal_plan) {
+
+    return {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorisation": localStorage.token
+        },
+        body: JSON.stringify({meal_plan})
+    }
+}
 function createUserObj(user) {
     return {
         method: "POST",
@@ -52,5 +70,6 @@ export default {loginUser,
     signUp,
     validate,
     hasToken: () => !!localStorage.token,
-    clearToken: () => localStorage.removeItem("token")
+    clearToken: () => localStorage.removeItem("token"),
+    newMealPlan
 };

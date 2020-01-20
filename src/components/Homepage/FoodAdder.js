@@ -23,8 +23,8 @@ class FoodAdder extends Component {
         return (
             <form onChange={this.inputChangeHandler} onSubmit={this.SubmitHandler}>
                 <h3>Input Food:</h3>
-                <input value={this.state.food} name="food" type="text" placeholder="food"/>
-                <button className="add-button">Add</button>
+                <input onChange = {() => 0} value={this.state.food} name="food" type="text" placeholder="food"/>
+                <button onChange =  {() => 0} className="add-button">Add</button>
             </form>
         );
     }
