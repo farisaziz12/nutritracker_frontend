@@ -1,4 +1,4 @@
-button {
+.button {
     position: relative;
     color: #1D9AF2;
     background-color: #292D3E;
@@ -11,10 +11,28 @@ button {
     font-size:14px;
     transition: all 0.2s ease-in-out;
     }
+.delete-button {
+    position: relative;
+    color: #1D9AF2;
+    background-color: #292D3E;
+    border: 1px solid #1D9AF2;
+    border-radius: 40px;
+    padding: 0 8px;
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+    right: -40px;
+    bottom: -2px;
+    font-size:20px;
+    transition: all 0.2s ease-in-out;
+    }
 
-    button:hover {
+    .button:hover {
     animation: swing 1s ease;
     animation-iteration-count: 1;
+    }
+    .delete-button:hover {
+    transform: rotateZ(-60deg);
     }
 
     @keyframes swing {

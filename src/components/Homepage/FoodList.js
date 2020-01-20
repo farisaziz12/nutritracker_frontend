@@ -25,7 +25,7 @@ class FoodList extends Component {
 
         <tr>
             <td>{food.name}</td>
-            <td>{food.calories} <input onChange={(event) => this.handleQuantityChange(event, food)} type="number"/></td> 
+            <td>{food.calories} <input onChange={(event) => this.handleQuantityChange(event, food)} type="number"/> <button onClick={() => this.props.removeFood(food.id)} className="delete-button">X</button></td> 
         </tr>
 
       ))
