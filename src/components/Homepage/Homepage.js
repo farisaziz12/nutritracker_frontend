@@ -10,10 +10,9 @@ function Homepage({user, logout}) {
     return (
         <>
             <LogoutButton logout={logout}/>
+            <HomepageHeader name={user.name}/>
             <UserStats user = {user} />
             <MealPlans mealPlans = {user.meal_plans} />
-            <HomepageHeader name={user.name}/>
-            <CalorieTrackerContainer/>
         </>
     )
 }
