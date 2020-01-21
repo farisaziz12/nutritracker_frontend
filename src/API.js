@@ -2,7 +2,7 @@ const BASE_URL = "http://localhost:3000";
 const VALIDATE_URL = BASE_URL + "/validate"
 const LOGIN_URL = BASE_URL + "/login";
 const SIGNUP_URL = BASE_URL + "/users";
-const MEAL_PLAN_URL = BASE_URL + "/meal_plans";
+const MEAL_PLAN_URL = BASE_URL + "/meal_plans/";
 const MEAL_URL = BASE_URL + "/meals";
 
 function loginUser(user) {
@@ -15,6 +15,12 @@ function loginUser(user) {
 function postMeal(meal) {
     return fetch(MEAL_URL, createObj({ meal }))
         .then(JSONresp)
+}
+
+function deleteMealPlan(id) {
+    return fetch(MEAL_PLAN_URL + id, {
+        method: "DELETE"
+    }).then(JSONresp)
 }
 
 
@@ -79,5 +85,6 @@ export default {loginUser,
     hasToken: () => !!localStorage.token,
     clearToken: () => localStorage.removeItem("token"),
     newMealPlan,
-    postMeal
+    postMeal,
+    deleteMealPlan
 };

@@ -22,6 +22,11 @@ function App() {
         }
     }, [])
 
+    function handleMealRemoveClick(id) {
+        API.deleteMealPlan(id)
+            .then(meal => setUser({...user, meal_plans: user.meal_plans.filter(mp => mp.id !== meal.id)}))
+    }
+
     function logout() {
         setUser(false);
         API.clearToken();
@@ -57,7 +62,7 @@ function App() {
                     <MealPlanForm handleMealPlanSubmit = {handleMealPlanSubmit}/>
                 </Route>
                 <Route path = "/meal_plans/:id">
-                    <MealPlanShowPage handleMealSubmit = {handleMealSubmit} mealPlans = {user.meal_plans || []} />
+                    <MealPlanShowPage handleMealRemoveClick = {handleMealRemoveClick} handleMealSubmit = {handleMealSubmit} mealPlans = {user.meal_plans || []} />
                 </Route>
                 <Route exact path = "/">
                     {user?  <Homepage user = {user} logout = {logout} /> : <Redirect to="/login" />}

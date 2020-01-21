@@ -78,7 +78,6 @@ class CalorieTrackerContainer extends Component {
     render() {
         return (
             <>
-                <CaloriesLeft calorieLimit={this.state.calorieLimit} caloriesConsumed={this.state.caloriesConsumed}/>
                 <FoodAdder mealName = {this.state.mealName} handleMealNameChange = {this.handleMealNameChange}  foodHandler={this.foodSubmitHandler}/>
                 {this.state.errorMessage !== undefined&&
                 <ErrorMessage errorMessage={this.state.errorMessage}/>

@@ -8,6 +8,7 @@ class FoodList extends Component {
 
     handleQuantityChange = (event, food) => {
         const quantity = event.target.value
+        if (!quantity) return;
         this.props.changeFoodQuantity(quantity, food.id) //send up to parent to change calorie of chosen food by selected quantity in consumed foods state
     }
 
