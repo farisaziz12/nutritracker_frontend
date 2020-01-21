@@ -7,7 +7,6 @@ button {
     padding: 0 15px;
     cursor: pointer;
     height:32px;
-    width: 90px;
     font-size:14px;
     transition: all 0.2s ease-in-out;
     }
@@ -25,34 +24,44 @@ button {
     bottom: -2px;
     font-size:20px;
     transition: all 0.2s ease-in-out;
-    }
+}
 
-    .button:hover {
+.remove {
+    color: white;
+    background-color: red;
+}
+
+.add {
+    color: white;
+    background-color: green;
+}
+
+.button:hover {
     animation: swing 1s ease;
     animation-iteration-count: 1;
-    }
-    .delete-button:hover {
+}
+.delete-button:hover {
     transform: rotateZ(-60deg);
-    }
+}
 
-    @keyframes swing {
+@keyframes swing {
     15% {
-    transform: translateX(5px);
+        transform: translateX(5px);
     }
     30% {
-    transform: translateX(-5px);
+        transform: translateX(-5px);
     }
     50% {
-    transform: translateX(3px);
+        transform: translateX(3px);
     }
     65% {
-    transform: translateX(-3px);
+        transform: translateX(-3px);
     }
     80% {
-    transform: translateX(2px);
+        transform: translateX(2px);
     }
     100% {
-    transform: translateX(0);
+        transform: translateX(0);
     }
 }
 
@@ -66,9 +75,9 @@ input[type=text], select {
     box-sizing: border-box;
     position: relative;
     right: -50px;
-  }
+}
 
-  input[type=password], select {
+input[type=password], select {
     width: 30%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -78,10 +87,10 @@ input[type=text], select {
     box-sizing: border-box;
     position: relative;
     right: -35px;
-  }
-  input[type= number], select {
+}
+input[type= number], select {
     width: 10%;
-    padding: 12px 20px;
+    padding: 8px 15px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
@@ -89,27 +98,27 @@ input[type=text], select {
     box-sizing: border-box;
     position: relative;
     right: -35px;
-  }
-  
-  .meal-plan-grid {
-      margin: auto;
-      display: flex;
-      width: 800px;
-      height: 200px;
-      flex-direction: row;
-      justify-content: space-between;
-  }
+}
+
+.meal-plan-grid {
+    margin: auto;
+    display: flex;
+    width: 800px;
+    height: 200px;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
 .meal-plan {
-      color: green;
-      border-style: solid;
-      border-width: medium;
-      flex: 4 25%;
-      vertical-align: middle;
-      line-height: normal;
-  }
+    color: green;
+    border-style: solid;
+    border-width: medium;
+    flex: 4 25%;
+    vertical-align: middle;
+    line-height: normal;
+}
 
-  .add-button {
+.add-button {
     position: relative;
     color: #1D9AF2;
     background-color: #292D3E;
@@ -121,9 +130,9 @@ input[type=text], select {
     font-size:14px;
     transition: all 0.2s ease-in-out;
     right: 45px;
-    }
+}
 
-  .confirm-button {
+.confirm-button {
     position: relative;
     color: #1D9AF2;
     background-color: #292D3E;
@@ -135,31 +144,31 @@ input[type=text], select {
     font-size:14px;
     bottom: -5px;
     transition: all 0.2s ease-in-out;
-    }
+}
 
-    .add-button:hover {
+.add-button:hover {
     animation: swing 1s ease;
     animation-iteration-count: 1;
-    }
+}
 
-    @keyframes swing {
+@keyframes swing {
     15% {
-    transform: translateX(5px);
+        transform: translateX(5px);
     }
     30% {
-    transform: translateX(-5px);
+        transform: translateX(-5px);
     }
     50% {
-    transform: translateX(3px);
+        transform: translateX(3px);
     }
     65% {
-    transform: translateX(-3px);
+        transform: translateX(-3px);
     }
     80% {
-    transform: translateX(2px);
+        transform: translateX(2px);
     }
     100% {
-    transform: translateX(0);
+        transform: translateX(0);
     }
 }
 
@@ -167,18 +176,18 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
-  }
-  
-  td, th {
+}
+
+td, th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }
+}
 
-  .error-message{
-      color: red;
-  }
+tr:nth-child(even) {
+    background-color: yellow;
+}
+
+.error-message{
+    color: red;
+}
