@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
+import MealPlanShowPage from './components/MealPlanShowPage.js';
+import MealPlanForm from './components/MealPlanForm.js';
 import './App.css';
 import LoginForm from './components/LoginForm.js';
 import SignupForm from './components/SignupForm.js';
 import API from './API.js';
-import {Switch, Route, Redirect} from 'react-router-dom';
+import {useHistory, Switch, Route, Redirect} from 'react-router-dom';
 import Homepage from './components/Homepage/Homepage';
 
 function App() {
@@ -15,8 +17,7 @@ function App() {
             API.validate().then(setUser)
                 .then(() => setError(false))
                 .catch(errorPromise => {
-                    console.log(errorPromise);
-                    //errorPromise.then(setError);
+                    errorPromise.then(setError);
                 });
         }
     }, [])
@@ -26,7 +27,22 @@ function App() {
         API.clearToken();
     }
 
+    function handleMealPlanSubmit(mealPlan) {
+        API.newMealPlan(mealPlan)
+            .then(mealPlan => setUser({...user, meal_plans: [...user.meal_plans, mealPlan]}))
+            .then(() => history.goBack())
+    }
 
+    function handleMealSubmit(mealObj) {
+        API.postMeal(mealObj)
+            .then(meal => setUser({...user, meal_plans: user.meal_plans.map(mp => {
+                if (meal.meal_plan_id === mp.id) mp.meals = [...mp.meals, meal];
+                return mp;
+            })}))
+    }
+
+    let history = useHistory();
+   
     return (
         <div className="App">
             {error && <h2>  {error.message} </h2>}
@@ -36,6 +52,12 @@ function App() {
                 </Route>
                 <Route path = '/signup'>
                     <SignupForm setError = {setError} handleLogin = {setUser} user = {user}/>
+                </Route>
+                <Route path = "/meal_plans/new">
+                    <MealPlanForm handleMealPlanSubmit = {handleMealPlanSubmit}/>
+                </Route>
+                <Route path = "/meal_plans/:id">
+                    <MealPlanShowPage handleMealSubmit = {handleMealSubmit} mealPlans = {user.meal_plans || []} />
                 </Route>
                 <Route exact path = "/">
                     {user?  <Homepage user = {user} logout = {logout} /> : <Redirect to="/login" />}

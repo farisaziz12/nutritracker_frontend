@@ -91,6 +91,23 @@ input[type=text], select {
     right: -35px;
   }
   
+  .meal-plan-grid {
+      margin: auto;
+      display: flex;
+      width: 800px;
+      height: 200px;
+      flex-direction: row;
+      justify-content: space-between;
+  }
+
+.meal-plan {
+      color: green;
+      border-style: solid;
+      border-width: medium;
+      flex: 4 25%;
+      vertical-align: middle;
+      line-height: normal;
+  }
 
   .add-button {
     position: relative;
