@@ -21,6 +21,9 @@ class CalorieTrackerContainer extends Component {
                      id: this.state.foods[0]? this.state.foods[this.state.foods.length - 1].id + 1 : 1, 
                      name: name,
                      calories: Math.round(calorieData.ENERC_KCAL),
+                     fat: calorieData.FAT || 0.0,
+                     carbohydrate: calorieData.CHOCDF || 0.0,
+                     protein: calorieData.PROCNT || 0.0,
                      quantity: 1
                  }
                  if (calorieData.ENERC_KCAL === undefined) {
@@ -46,6 +49,13 @@ class CalorieTrackerContainer extends Component {
             return;
         }
         this.props.handleMealSubmit({name: this.state.mealName, foods: this.state.foods, meal_plan_id: this.props.mealPlanId})
+            .then(() => this.setState({ 
+                calorieLimit: 2500, 
+                caloriesConsumed: 0, 
+                foods: [],
+                errorMessage: undefined,
+                mealName: ""
+            }))
     }
 
     changeFoodQuantity = (quantity, foodId) => {
@@ -68,12 +78,12 @@ class CalorieTrackerContainer extends Component {
         });
     }
 
-     removeFood = foodId => {
+    removeFood = foodId => {
         const newfoods = this.state.foods.filter(food => food.id !== foodId)
         this.setState({
             foods: newfoods
         })
-      }
+    }
 
     render() {
         return (

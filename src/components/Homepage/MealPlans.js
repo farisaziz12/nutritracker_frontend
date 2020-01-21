@@ -17,7 +17,7 @@ function MealPlans({mealPlans}) {
     return (
         <>
             <h2>Your Meal Plans:</h2>
-            <p>{mealPlanIndex + 1} - {mealPlanIndex + 4} of {mealPlans.length}</p>
+            <p>{mealPlanIndex + 1} - {mealPlans.length < 4 ? mealPlans.length : mealPlanIndex + 4} of {mealPlans.length}</p>
             <div className = "meal-plan-grid" >
                 <button onClick = {handleLessClick}>&lt;&lt;</button>
                 {mealPlans.slice(mealPlanIndex, mealPlanIndex + 4).map((m, idx) =>  

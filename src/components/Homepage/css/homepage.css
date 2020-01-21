@@ -90,7 +90,7 @@ input[type=password], select {
 }
 input[type= number], select {
     width: 10%;
-    padding: 12px 20px;
+    padding: 8px 15px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
@@ -185,7 +185,7 @@ td, th {
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: yellow;
 }
 
 .error-message{

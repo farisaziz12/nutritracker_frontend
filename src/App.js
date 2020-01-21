@@ -39,7 +39,7 @@ function App() {
     }
 
     function handleMealSubmit(mealObj) {
-        API.postMeal(mealObj)
+        return API.postMeal(mealObj)
             .then(meal => setUser({...user, meal_plans: user.meal_plans.map(mp => {
                 if (meal.meal_plan_id === mp.id) mp.meals = [...mp.meals, meal];
                 return mp;
@@ -47,7 +47,7 @@ function App() {
     }
 
     let history = useHistory();
-   
+
     return (
         <div className="App">
             {error && <h2>  {error.message} </h2>}

@@ -23,6 +23,17 @@ function MealPlanShowPage({handleMealRemoveClick, handleMealSubmit, mealPlans}) 
         return meal.foods.reduce((tot, food) => tot+= food.calories*quantity(food, meal), 0);
     }
 
+    function totalsForMeal(meal) {
+
+        return meal.foods.reduce((tot, curr) =>{
+            tot.calories += curr.calories*quantity(curr, meal);
+            tot.fat +=curr.fat*quantity(curr,meal);
+            tot.protein +=curr.protein*quantity(curr,meal);
+            tot.carbohydrate +=curr.carbohydrate*quantity(curr,meal);
+            return tot;
+        }, {calories: 0, fat: 0, carbohydrate: 0, protein: 0}) ;
+    }
+
     return (
         <div>
             <Link to ="/">Dashboard</Link>
@@ -30,8 +41,8 @@ function MealPlanShowPage({handleMealRemoveClick, handleMealSubmit, mealPlans}) 
             <h2>Calories: {caloriesForMealPlan(mealPlan)}</h2>
             <button className = "remove" onClick = {() => handleMealRemoveClick(params.id)}>Remove plan</button>
             <h2>Meals:</h2>
-            {mealPlan.meals.map(m => <Meal meal = {{...m, total: caloriesForMeal(m)}} key = {m.id} />)}
-            <button onClick = {() => setAddButtonClicked(!addButtonClicked)} className = "add">Add meal</button><br></br> 
+            {mealPlan.meals.map(m => <Meal meal = {{...m, total: totalsForMeal(m)}} key = {m.id} />)}
+            <button onClick = {() => setAddButtonClicked(!addButtonClicked)} className = "add">Add new meal</button><br></br> 
             {addButtonClicked? <CalorieTrackerContainer handleMealSubmit = {handleMealSubmit} mealPlanId = {mealPlan.id}/>: null}
             
         </div>
