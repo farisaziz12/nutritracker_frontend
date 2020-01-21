@@ -48,7 +48,7 @@ class CalorieTrackerContainer extends Component {
         this.props.handleMealSubmit({name: this.state.mealName, foods: this.state.foods, meal_plan_id: this.props.mealPlanId})
     }
 
-    changeFoodQuantiy = (quantity, foodId) => {
+    changeFoodQuantity = (quantity, foodId) => {
         const food = this.state.foods.find(food => food.id === foodId)
 
         if (food && parseInt(quantity) !== 0) {
@@ -83,7 +83,7 @@ class CalorieTrackerContainer extends Component {
                 {this.state.errorMessage !== undefined&&
                 <ErrorMessage errorMessage={this.state.errorMessage}/>
                 }
-                <FoodList removeFood={this.removeFood} changeFoodQuantiy={this.changeFoodQuantiy} consumeFoods={this.consumeFoods} caloriesConsumed={this.state.caloriesConsumed} foods={this.state.foods}/>
+                <FoodList removeFood={this.removeFood} changeFoodQuantity={this.changeFoodQuantity} consumeFoods={this.consumeFoods} caloriesConsumed={this.state.caloriesConsumed} foods={this.state.foods}/>
             </>
         );
     }
