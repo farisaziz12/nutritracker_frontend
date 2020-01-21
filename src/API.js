@@ -3,6 +3,7 @@ const VALIDATE_URL = BASE_URL + "/validate"
 const LOGIN_URL = BASE_URL + "/login";
 const SIGNUP_URL = BASE_URL + "/users";
 const MEAL_PLAN_URL = BASE_URL + "/meal_plans";
+const MEAL_URL = BASE_URL + "/meals";
 
 function loginUser(user) {
     
@@ -11,14 +12,20 @@ function loginUser(user) {
         .then(handleUserResponse)
 } 
 
+function postMeal(meal) {
+    return fetch(MEAL_URL, createObj({ meal }))
+        .then(JSONresp)
+}
+
+
 function signUp(user) {
     return fetch(SIGNUP_URL, createUserObj(user))
         .then(JSONresp)
         .then(handleUserResponse)
 }
 
-function newMealPlan(mealPlan) {
-    return fetch(MEAL_PLAN_URL, createMealPlanObj(mealPlan))
+function newMealPlan(meal_plan) {
+    return fetch(MEAL_PLAN_URL, createObj({ meal_plan }))
         .then(JSONresp)
 }
 
@@ -34,7 +41,7 @@ function JSONresp(resp) {
     throw resp.json();
 }
 
-function createMealPlanObj(meal_plan) {
+function createObj(obj) {
 
     return {
         method: "POST",
@@ -43,7 +50,7 @@ function createMealPlanObj(meal_plan) {
             "Accept": "application/json",
             "Authorisation": localStorage.token
         },
-        body: JSON.stringify({meal_plan})
+        body: JSON.stringify(obj)
     }
 }
 function createUserObj(user) {
@@ -71,5 +78,6 @@ export default {loginUser,
     validate,
     hasToken: () => !!localStorage.token,
     clearToken: () => localStorage.removeItem("token"),
-    newMealPlan
+    newMealPlan,
+    postMeal
 };

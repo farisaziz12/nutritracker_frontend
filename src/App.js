@@ -33,6 +33,13 @@ function App() {
             .then(() => history.goBack())
     }
 
+    function handleMealSubmit(mealObj) {
+        API.postMeal(mealObj)
+            .then(meal => setUser({...user, meal_plans: user.meal_plans.map(mp => {
+                if (meal.meal_plan_id === mp.id) mp.meals = [...mp.meals, meal];
+                return mp;
+            })}))
+    }
 
     let history = useHistory();
    
@@ -50,7 +57,7 @@ function App() {
                     <MealPlanForm handleMealPlanSubmit = {handleMealPlanSubmit}/>
                 </Route>
                 <Route path = "/meal_plans/:id">
-                    <MealPlanShowPage mealPlans = {user.meal_plans || []} />
+                    <MealPlanShowPage handleMealSubmit = {handleMealSubmit} mealPlans = {user.meal_plans || []} />
                 </Route>
                 <Route exact path = "/">
                     {user?  <Homepage user = {user} logout = {logout} /> : <Redirect to="/login" />}

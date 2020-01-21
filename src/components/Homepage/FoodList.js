@@ -12,8 +12,7 @@ class FoodList extends Component {
     }
 
     render() {
-        const totalArr = this.props.foodsConsumed.map(food => food.calories)
-        const total = totalArr[0]? totalArr.reduce((total, cal) => total + cal) : 0 
+        const total = this.props.foods.reduce((tot, curr) => tot += curr.calories*curr.quantity, 0) ;
         return (<>
             <table>
                 <thead>
@@ -24,11 +23,11 @@ class FoodList extends Component {
                 </thead>
                 <tbody>
                     {
-                        this.props.foodsConsumed.map((food, idx) => (
+                        this.props.foods.map((food, idx) => (
 
                             <tr key = {idx}>
                                 <td>{food.name}</td>
-                                <td>{food.calories} <input onChange={(event) => this.handleQuantityChange(event, food)} type="number" placeholder = {0}/></td> 
+                                <td>{food.calories*food.quantity} <input value = {food.quantity} onChange={(event) => this.handleQuantityChange(event, food)} type="number"/></td> 
                             </tr>
 
                         ))
