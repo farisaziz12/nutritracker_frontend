@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './css/homepage.css';
 
 function LogoutButton({logout}){
     return (
-        <button className="button" onClick = {logout}> Log out</button>
+        <button className="logout button" onClick = {logout}> Log out</button>
     );
 
 }

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import API from '../../API.js'
-import CaloriesLeft from './CaloriesLeft';
 import FoodAdder from './FoodAdder';
 import FoodList from './FoodList';
 import ErrorMessage from './ErrorMessage';

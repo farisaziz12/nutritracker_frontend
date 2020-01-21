@@ -4,7 +4,7 @@ function Meal({meal}) {
     function quantity(food) {
         return meal.meal_foods.find(mf => mf.food_id === food.id).quantity
     }
-    console.log(meal.total);
+
     return (
         <>
             <h2>{meal.name}</h2>

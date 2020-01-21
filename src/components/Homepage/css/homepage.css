@@ -26,6 +26,13 @@ button {
     transition: all 0.2s ease-in-out;
 }
 
+.logout {
+    width: 100px;
+}
+a:visited {
+    color: red;
+    text-decoration: none;
+}
 .remove {
     color: white;
     background-color: red;

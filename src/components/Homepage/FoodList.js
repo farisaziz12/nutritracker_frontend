@@ -6,10 +6,10 @@ class FoodList extends Component {
         this.props.consumeFoods(total)
     }
 
-    handleQuantityChange = (event, food) => {
-        const quantity = event.target.value
+    handleQuantityChange = (food, plus = true) => {
+        const quantity = plus? food.quantity + 1 : food.quantity - 1;
         if (!quantity) return;
-        this.props.changeFoodQuantity(quantity, food.id) //send up to parent to change calorie of chosen food by selected quantity in consumed foods state
+        this.props.changeFoodQuantity(quantity, food.id) 
     }
 
     render() {
@@ -39,11 +39,11 @@ class FoodList extends Component {
 
                             <tr key = {idx}>
                                 <td>{food.name}</td>
-                                <td>{food.calories} <input value = {food.quantity} onChange={(event) => this.handleQuantityChange(event, food)} type="number"/><button onClick={() => this.props.removeFood(food.id)} className="delete-button">X</button></td> 
+                                <td>{food.calories} </td> 
                                 <td>{Math.round(food.fat*100)/100}</td>
                                 <td>{Math.round(food.protein*100)/100}</td>
                                 <td>{Math.round(food.carbohydrate*100)/100}</td>
-                                <td>{food.quantity}</td>
+                                <td>{food.quantity} <button onClick={() => this.props.removeFood(food.id)} className="delete-button">X</button><button onClick={() => this.handleQuantityChange(food)}>+</button><button onClick={() => this.handleQuantityChange(food, false)}>-</button></td>
                             </tr>
 
                         ))
