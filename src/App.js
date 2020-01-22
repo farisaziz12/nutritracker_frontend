@@ -63,7 +63,7 @@ function App() {
                     <MealPlanForm handleMealPlanSubmit = {handleMealPlanSubmit}/>
                 </Route>
                 <Route path = "/meal_plans/:id">
-                    <MealPlanShowPage handleMealRemoveClick = {handleMealRemoveClick} handleMealSubmit = {handleMealSubmit} mealPlans = {user.meal_plans || []} />
+                    <MealPlanShowPage limit = {user.calorieLimit} handleMealRemoveClick = {handleMealRemoveClick} handleMealSubmit = {handleMealSubmit} mealPlans = {user.meal_plans || []} />
                 </Route>
                 <Route exact path = "/">
                     {user?  <Homepage user = {user} logout = {logout} /> : <Redirect to="/login" />}

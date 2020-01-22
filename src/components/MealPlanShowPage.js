@@ -3,7 +3,7 @@ import {useParams, Redirect, Link} from 'react-router-dom';
 import Meal from './Meal.js';
 import CalorieTrackerContainer from './Homepage/CalorieTrackerContainer.js'
 
-function MealPlanShowPage({handleMealRemoveClick, handleMealSubmit, mealPlans}) {
+function MealPlanShowPage({limit, handleMealRemoveClick, handleMealSubmit, mealPlans}) {
 
     let params = useParams();
     const mealPlan = mealPlans.find(m => m.id === parseInt(params.id, 10));
@@ -34,17 +34,24 @@ function MealPlanShowPage({handleMealRemoveClick, handleMealSubmit, mealPlans}) 
         }, {calories: 0, fat: 0, carbohydrate: 0, protein: 0}) ;
     }
 
+    const remainingCalories = limit - caloriesForMealPlan(mealPlan);
+
     return (
         <div>
             <Link to ="/">Dashboard</Link>
             <h1>Meal Plan: {mealPlan.name}</h1>
             <h2>Calories: {caloriesForMealPlan(mealPlan)}</h2>
+            <h2>Remaining calories: {remainingCalories} </h2>
             <button className = "remove" onClick = {() => handleMealRemoveClick(params.id)}>Remove plan</button>
             <h2>Meals:</h2>
             {mealPlan.meals.map(m => <Meal meal = {{...m, total: totalsForMeal(m)}} key = {m.id} />)}
             <button onClick = {() => setAddButtonClicked(!addButtonClicked)} className = "add">Add new meal</button><br></br> 
-            {addButtonClicked? <CalorieTrackerContainer handleMealSubmit = {handleMealSubmit} mealPlanId = {mealPlan.id}/>: null}
-            
+            {addButtonClicked? <CalorieTrackerContainer 
+                allowed = {remainingCalories} 
+                handleMealSubmit = {handleMealSubmit} 
+                mealPlanId = {mealPlan.id}/>
+            : null}
+
         </div>
     );
 }

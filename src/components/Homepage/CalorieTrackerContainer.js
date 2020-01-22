@@ -11,6 +11,14 @@ class CalorieTrackerContainer extends Component {
         mealName: ""
      }
 
+    total = (foods) => ( foods.reduce((tot, curr) =>{
+        tot.calories += curr.calories*curr.quantity;
+        tot.fat +=curr.fat*curr.quantity;
+        tot.protein +=curr.protein*curr.quantity;
+        tot.carbohydrate +=curr.carbohydrate*curr.quantity;
+        return tot;
+    }, {calories: 0, fat: 0, carbohydrate: 0, protein: 0}) )
+
      foodSubmitHandler = ({name}) => {
          fetch(`http://localhost:3000/search?food=${name}`)
              .then(resp => resp.json())
@@ -45,6 +53,10 @@ class CalorieTrackerContainer extends Component {
         } 
         if (!this.state.mealName) {
             this.setState({ errorMessage: "A meal must have a name" });
+            return;
+        }
+        if (this.total(this.state.foods).calories > this.props.allowed) {
+            this.setState({ errorMessage: "This meal exceeds your calorie limit for meal plans. Either lower your limit or eat less food" });
             return;
         }
         this.props.handleMealSubmit({name: this.state.mealName, foods: this.state.foods, meal_plan_id: this.props.mealPlanId})
@@ -92,7 +104,14 @@ class CalorieTrackerContainer extends Component {
                 {this.state.errorMessage !== undefined&&
                 <ErrorMessage errorMessage={this.state.errorMessage}/>
                 }
-                <FoodList removeFood={this.removeFood} changeFoodQuantity={this.changeFoodQuantity} consumeFoods={this.consumeFoods} caloriesConsumed={this.state.caloriesConsumed} foods={this.state.foods}/>
+                <FoodList 
+                    removeFood={this.removeFood} 
+                    total = {this.total(this.state.foods)}
+                    changeFoodQuantity={this.changeFoodQuantity} 
+                    consumeFoods={this.consumeFoods} 
+                    caloriesConsumed={this.state.caloriesConsumed} 
+                    foods={this.state.foods}
+                />
             </>
         );
     }

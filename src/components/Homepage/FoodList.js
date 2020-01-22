@@ -13,14 +13,7 @@ class FoodList extends Component {
     }
 
     render() {
-        const total = this.props.foods.reduce((tot, curr) =>{
-            tot.calories += curr.calories*curr.quantity;
-            tot.fat +=curr.fat*curr.quantity;
-            tot.protein +=curr.protein*curr.quantity;
-            tot.carbohydrate +=curr.carbohydrate*curr.quantity;
-            return tot;
-        }, {calories: 0, fat: 0, carbohydrate: 0, protein: 0}) ;
-        
+        const {total} = this.props;
         return (<>
             <table>
                 <thead>
