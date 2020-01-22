@@ -9,7 +9,25 @@ button {
     height:32px;
     font-size:14px;
     transition: all 0.2s ease-in-out;
-    }
+}
+
+table img {
+    width: 40px;
+    height: 40px;
+    border:1px solid black;
+}
+
+
+td {
+    align: center;
+    color: black;
+}
+
+th {
+    align: center;
+    color: black;
+}
+
 .delete-button {
     position: relative;
     color: #1D9AF2;
