@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Meal({meal}) {
+function Meal({handleMealRemoveClick, meal}) {
     function quantity(food) {
         return meal.meal_foods.find(mf => mf.food_id === food.id).quantity
     }
@@ -8,6 +8,7 @@ function Meal({meal}) {
     return (
         <>
             <h2>{meal.name}</h2>
+            <button className = "remove" onClick = {() => handleMealRemoveClick(meal.id)}>Delete Meal</button>
             <div>
                 <table>
                     <thead>
@@ -46,7 +47,8 @@ function Meal({meal}) {
                         </tr>
                     </tfoot>
                 </table>
-            </div></>)
+            </div>
+        </>)
 }
 
 export default Meal;

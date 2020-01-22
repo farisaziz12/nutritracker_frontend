@@ -3,7 +3,7 @@ const VALIDATE_URL = BASE_URL + "/validate"
 const LOGIN_URL = BASE_URL + "/login";
 const SIGNUP_URL = BASE_URL + "/users";
 const MEAL_PLAN_URL = BASE_URL + "/meal_plans/";
-const MEAL_URL = BASE_URL + "/meals";
+const MEAL_URL = BASE_URL + "/meals/";
 const EDIT_URL = BASE_URL + "/users/update"
 
 function loginUser(user) {
@@ -16,6 +16,12 @@ function loginUser(user) {
 function postMeal(meal) {
     return fetch(MEAL_URL, createObj({ meal }))
         .then(JSONresp)
+}
+
+function deleteMeal(id) {
+    return fetch(MEAL_URL + id, {
+        method: "DELETE"
+    }).then(JSONresp)
 }
 
 function deleteMealPlan(id) {
@@ -100,5 +106,6 @@ export default {loginUser,
     newMealPlan,
     postMeal,
     deleteMealPlan,
-    editUser
+    editUser,
+    deleteMeal
 };
