@@ -43,8 +43,6 @@ th {
     cursor: pointer;
     height: 32px;
     width: 32px;
-    right: -40px;
-    bottom: -2px;
     font-size:20px;
     transition: all 0.2s ease-in-out;
 }

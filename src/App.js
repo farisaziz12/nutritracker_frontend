@@ -23,9 +23,19 @@ function App() {
         }
     }, [])
 
-    function handleMealRemoveClick(id) {
+    function handleMealPlanRemoveClick(id) {
+        if (!window.confirm("Are you sure you want to remove this meal plan?")) return;
         API.deleteMealPlan(id)
             .then(meal => setUser({...user, meal_plans: user.meal_plans.filter(mp => mp.id !== meal.id)}))
+    }
+
+    function handleMealRemoveClick(id) {
+        if (!window.confirm("Are you sure you want to remove this meal?")) return;
+        API.deleteMeal(id)
+            .then(meal => setUser({...user, meal_plans: user.meal_plans.map(mp => {
+                if (meal.meal_plan_id === mp.id)  mp.meals = mp.meals.filter(m => m.id !== meal.id);
+                return mp;
+            })}))
     }
 
     function logout() {
@@ -63,7 +73,13 @@ function App() {
                     <MealPlanForm handleMealPlanSubmit = {handleMealPlanSubmit}/>
                 </Route>
                 <Route path = "/meal_plans/:id">
-                    <MealPlanShowPage limit = {user.calorieLimit} handleMealRemoveClick = {handleMealRemoveClick} handleMealSubmit = {handleMealSubmit} mealPlans = {user.meal_plans || []} />
+                    <MealPlanShowPage 
+                        handleMealRemoveClick = {handleMealRemoveClick}
+                        limit = {user.calorieLimit} 
+                        handleMealPlanRemoveClick = {handleMealPlanRemoveClick} 
+                        handleMealSubmit = {handleMealSubmit} 
+                        mealPlans = {user.meal_plans || []} 
+                    />
                 </Route>
                 <Route exact path = "/">
                     {user?  <Homepage user = {user} logout = {logout} /> : <Redirect to="/login" />}
