@@ -42,13 +42,13 @@ class Edit extends Component {
                 <h1>Edit Info</h1>
                 <form onSubmit={this.handleEditSumit}> 
                     <h2>Weight (kg)</h2>
-                    <input onChange={this.editState} className="edit-input" type="number" name="weight" value={this.state.weight}/><br/>
+                    <input onChange={this.editState} className="edit-input" type="number" name="weight" value={this.state.weight || "-"}/><br/>
                     <h2>Height (cm)</h2>
-                    <input onChange={this.editState} type="number" name="height" value={this.state.height}/><br/>
+                    <input onChange={this.editState} type="number" name="height" value={this.state.height || "-"}/><br/>
                     <h2>Calorie Limit</h2>
-                    <input onChange={this.editState} type="number" name="calorieLimit" value={this.state.calorieLimit}/><br/>
+                    <input onChange={this.editState} type="number" name="calorieLimit" value={this.state.calorieLimit || "-"}/><br/>
                     <h2>Age</h2>
-                    <input onChange={this.editState} type="number" name="age" value={this.state.age}/><br/>
+                    <input onChange={this.editState} type="number" name="age" value={this.state.age || "-"}/><br/>
                     <button>Submit</button>
                 </form>
             {this.state.redirect&& <Redirect to='/'/> }
