@@ -38,7 +38,7 @@ class FoodList extends Component {
                         this.props.foods.map((food, idx) => (
 
                             <tr key = {idx}>
-                                <td>{food.name}</td>
+                                <td><img src = {food.image} alt = {food.name} /><div><strong>{food.name}</strong></div></td>
                                 <td>{food.calories} </td> 
                                 <td>{Math.round(food.fat*100)/100}</td>
                                 <td>{Math.round(food.protein*100)/100}</td>

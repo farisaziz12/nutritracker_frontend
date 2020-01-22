@@ -25,7 +25,7 @@ function Meal({meal}) {
                             meal.foods.map((food, idx) => (
 
                                 <tr key = {idx}>
-                                    <td>{food.name}</td>
+                                    <td><img src = {food.image} alt = {food.name} /><div><strong>{food.name}</strong></div></td>
                                     <td>{food.calories} </td> 
                                     <td>{food.fat}</td>
                                     <td>{food.protein}</td>

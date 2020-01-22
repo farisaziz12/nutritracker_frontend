@@ -22,7 +22,8 @@ class CalorieTrackerContainer extends Component {
                      fat: calorieData.FAT || 0.0,
                      carbohydrate: calorieData.CHOCDF || 0.0,
                      protein: calorieData.PROCNT || 0.0,
-                     quantity: 1
+                     quantity: 1,
+                     image: calorieData.image
                  }
                  if (calorieData.ENERC_KCAL === undefined) {
                      this.setState({
@@ -84,6 +85,7 @@ class CalorieTrackerContainer extends Component {
     }
 
     render() {
+
         return (
             <>
                 <FoodAdder mealName = {this.state.mealName} handleMealNameChange = {this.handleMealNameChange}  foodHandler={this.foodSubmitHandler}/>
