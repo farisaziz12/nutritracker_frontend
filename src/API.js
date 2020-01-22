@@ -4,6 +4,7 @@ const LOGIN_URL = BASE_URL + "/login";
 const SIGNUP_URL = BASE_URL + "/users";
 const MEAL_PLAN_URL = BASE_URL + "/meal_plans/";
 const MEAL_URL = BASE_URL + "/meals";
+const EDIT_URL = BASE_URL + "/users/update"
 
 function loginUser(user) {
     
@@ -21,6 +22,18 @@ function deleteMealPlan(id) {
     return fetch(MEAL_PLAN_URL + id, {
         method: "DELETE"
     }).then(JSONresp)
+}
+
+function editUser(obj){
+    return fetch(EDIT_URL, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorisation": localStorage.token
+            },
+            body: JSON.stringify(obj)
+    })
 }
 
 
@@ -86,5 +99,6 @@ export default {loginUser,
     clearToken: () => localStorage.removeItem("token"),
     newMealPlan,
     postMeal,
-    deleteMealPlan
+    deleteMealPlan,
+    editUser
 };

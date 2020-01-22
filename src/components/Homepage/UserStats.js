@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 function UserStats({user: {age, weight, height}}) {
 
@@ -11,6 +12,7 @@ function UserStats({user: {age, weight, height}}) {
                 <p>Age: {age || "-"} </p>
                 <p>BMI: {height && weight? Math.round(weight/(height/100.0)**2) : "-"}</p>
             </h3>
+            <button><Link to ="/edit">Edit</Link></button>
         </div>
     )
 }
