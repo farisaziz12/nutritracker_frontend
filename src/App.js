@@ -50,7 +50,7 @@ function App() {
 
     return (
         <div className="App">
-            {error && <h2>  {error.message} </h2>}
+            {error && <h2 className = "error">  {error.message} </h2>}
             <Switch>
                 <Route path = '/login'>
                     <LoginForm setError = {setError} handleLogin = {setUser} user = {user}/>
