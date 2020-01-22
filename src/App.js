@@ -7,6 +7,7 @@ import SignupForm from './components/SignupForm.js';
 import API from './API.js';
 import {useHistory, Switch, Route, Redirect} from 'react-router-dom';
 import Homepage from './components/Homepage/Homepage';
+import Edit from './components/Edit.js';
 
 function App() {
     const [user, setUser] = useState(false);
@@ -66,6 +67,9 @@ function App() {
                 </Route>
                 <Route exact path = "/">
                     {user?  <Homepage user = {user} logout = {logout} /> : <Redirect to="/login" />}
+                </Route>
+                <Route path = "/edit">
+                    {<Edit setUser={setUser} user = {user} />}
                 </Route>
             </Switch>
         </div>
