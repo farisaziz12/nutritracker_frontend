@@ -20,7 +20,7 @@ class CalorieTrackerContainer extends Component {
     }, {calories: 0, fat: 0, carbohydrate: 0, protein: 0}) )
 
      foodSubmitHandler = ({name}) => {
-         fetch(`http://localhost:3000/search?food=${name}`)
+         fetch(`https://nutri-tracking.herokuapp.com/search?food=${name}`)
              .then(resp => resp.json())
              .then(calorieData => {
                  let newFood = {

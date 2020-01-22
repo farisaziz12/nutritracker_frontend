@@ -23,7 +23,7 @@ function MealPlans({mealPlans}) {
                 {mealPlans.slice(mealPlanIndex, mealPlanIndex + 4).map((m, idx) =>  
                 <div key = {idx} className = "meal-plan">
                     <h2>{m.name}</h2>
-                    <p>Calories: -</p>
+                    <p>Calories: {m.meals[0]? m.meals[0].foods.reduce((a,b) => a + b.calories, 0) : "-"}</p>
                     <Link to = {`/meal_plans/${m.id}`}><button>View</button></Link>
                 </div>
                 )}

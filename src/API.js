@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://nutri-tracking.herokuapp.com/";
 const VALIDATE_URL = BASE_URL + "/validate"
 const LOGIN_URL = BASE_URL + "/login";
 const SIGNUP_URL = BASE_URL + "/users";
